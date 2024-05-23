@@ -76,7 +76,7 @@ class PageSetup:
 
     def master_page_display(self, pagenumber):
         self.display_background_image()
-        self.styles.master_page_style
+        #self.styles.master_page_style
         self.master_title_display(pagenumber=pagenumber)
         self.get_page_overview_section(pagenumber=pagenumber)
         if pagenumber == 0:

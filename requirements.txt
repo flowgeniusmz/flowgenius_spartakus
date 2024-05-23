@@ -39,3 +39,4 @@ scrapegraphai
 yelpapi
 googlemaps
 pydantic
+ffmpeg
