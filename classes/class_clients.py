@@ -66,7 +66,7 @@ class SupabaseClient:
         else:
             return None
         
-    def user_addition(self, username: str, password: str, email: str, firstname: str, lastname: str, fullname: str, createddate: str, businessid: str):
+    def user_addition(self, username: str, password: str, email: str, firstname: str, lastname: str, fullname: str, createddate: str,  userrole: str):
         new_user_data = self.new_user_data_template.copy()
         new_user_data[self.column_username] = username
         new_user_data[self.column_password] = password
@@ -77,7 +77,7 @@ class SupabaseClient:
         new_user_data[self.column_createddate] = createddate
         new_user_data[self.column_threadid] = self.oaiClient.beta.threads.create().id
         new_user_data[self.column_vectorstoreid] = self.oaiClient.beta.vector_stores.create().id
-        new_user_data[self.column_businessid] = businessid
+        new_user_data[self.column_userrole] = userrole
         self.new_user_data = new_user_data
         response = self.supaClient.table(table_name=self.table_users).insert(new_user_data).execute()
         if response.data:

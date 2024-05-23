@@ -53,10 +53,11 @@ class UserFlow:
             self.business_name = st.text_input(label="Business Name", key="business_name")
             self.email = st.text_input(label="Email", key="email")
             self.createddate = datetime.now().isoformat()
+            self.userrole = st.radio(label="User Role", options=["Admin", "Client", "Carrier"], index=None, horizontal=True)
         self.userflow_submit = st.button(label="Submit", key="userflow_submitted", type="primary")
         if self.userflow_submit:
             if self.usertype == "new":
-                self.user_data = self.supabase_client.user_addition(username=self.username, password=self.password, email=self.email, firstname=self.firstname, lastname=self.lastname, fullname=self.fullname, createddate=self.createddate, businessid=self.business_name)
+                self.user_data = self.supabase_client.user_addition(username=self.username, password=self.password, email=self.email, firstname=self.firstname, lastname=self.lastname, fullname=self.fullname, createddate=self.createddate, userrole=self.userrole)
             elif self.usertype == "existing":
                 self.user_data = self.supabase_client.user_authentication(username=self.username, password=self.password)
             else: 
