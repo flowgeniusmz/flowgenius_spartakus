@@ -69,6 +69,8 @@ class UserFlow:
             if self.user_data is not None:
                 st.session_state.userflow_complete = True
                 st.session_state.userauth_complete = True
+                st.session_state.userflow_authenticated = True
+                st.session_state.usertype = self.usertype
                 self.userflow_complete = True
                 self.userauth_complete = True
                 self.userdata = self.user_data
