@@ -67,6 +67,9 @@ class SupabaseClient:
             return None
         
     def user_addition(self, username: str, password: str, email: str, firstname: str, lastname: str, fullname: str, createddate: str,  userrole: str):
+        vstore = self.oaiClient.beta.vector_stores.create().id
+        threadid = self.oaiClient.beta.threads.create(tool_resources={"file_search": {"vector_store_ids": [vstore]}}).id
+        
         new_user_data = self.new_user_data_template.copy()
         new_user_data[self.column_username] = username
         new_user_data[self.column_password] = password
@@ -75,8 +78,8 @@ class SupabaseClient:
         new_user_data[self.column_lastname] = lastname
         new_user_data[self.column_fullname] = fullname
         new_user_data[self.column_createddate] = createddate
-        new_user_data[self.column_threadid] = self.oaiClient.beta.threads.create().id
-        new_user_data[self.column_vectorstoreid] = self.oaiClient.beta.vector_stores.create().id
+        new_user_data[self.column_threadid] = threadid
+        new_user_data[self.column_vectorstoreid] = vstore
         new_user_data[self.column_userrole] = userrole
         self.new_user_data = new_user_data
         response = self.supaClient.table(table_name=self.table_users).insert(new_user_data).execute()
@@ -86,7 +89,13 @@ class SupabaseClient:
             return None
 
 
-   
+v =  "vs_agyguE1uzofZagcgUolwM5CL"
+t = "thread_DHgIVj1xlS85dTB8tOEmLuXt"
+
+client = oaiClient(api_key=st.secrets.openai.api_key)
+
+client.beta.threads.update(thread_id=t, tool_resources={"file_search": {"vector_store_ids": [v]}})
+
 
 
 
