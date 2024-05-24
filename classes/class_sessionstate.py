@@ -14,5 +14,11 @@ class SessionState:
             st.session_state.user_type = None
             st.session_state.userflow_complete = False
 
+    def initialize_userflow(self):
+        if "userflow_initialized" not in st.session_state:
+            st.session_state.userflow_initialized = False
+            st.session_state.userflow_complete = False
+            st.session_state.userflow_auth_complete = False
+            st.session_state.
     def initialize_requests(self):
         self.request_headers = {'Accept': 'application/json', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'Accept-Language': 'en-US,en;q=0.9','Accept-Encoding': 'gzip, deflate, br'}

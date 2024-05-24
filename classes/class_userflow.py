@@ -8,10 +8,8 @@ from config import pagesetup as ps
 
 class UserFlow:
     def __init__(self):
+        self.initialize_userflow_attributes()
         self.initialize_sessionstate()
-        self.supabase_client = class_clients.SupabaseClient()
-        self.userflow_complete = st.session_state.userflow_complete
-        self.userauth_complete = st.session_state.userauth_complete
         self.userflow_render()
 
     def initialize_sessionstate(self):
@@ -19,6 +17,11 @@ class UserFlow:
             st.session_state.userflow_initialized = True
             st.session_state.userflow_complete = False
             st.session_state.userauth_complete = False
+
+    def initialize_userflow_attributes(self):
+        self.supabase_client = class_clients.SupabaseClient()
+        self.userflow_complete = st.session_state.userflow_complete
+        self.userauth_complete = st.session_state.userauth_complete
 
     def userflow_render(self):
         if self.userflow_complete:
@@ -76,4 +79,4 @@ class UserFlow:
     
     def switch_to_homepage(self):
         path = st.secrets.pageconfig.page_paths[0]
-        st.switch_page(page="pages/1_🏠_Home.py")
+        st.switch_page(page="1_🏠_Home.py")
