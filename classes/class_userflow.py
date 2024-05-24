@@ -1,8 +1,9 @@
 import streamlit as st
 from typing import Literal
-from classes import class_clients
+from classes import class_clients, class_user
 from datetime import datetime
 from config import pagesetup as ps
+
 
 
 
@@ -71,6 +72,8 @@ class UserFlow:
                 st.session_state.userauth_complete = True
                 st.session_state.userflow_authenticated = True
                 st.session_state.usertype = self.usertype
+                st.session_state.user  = class_user.User()
+                self.user = st.session_state.user
                 self.userflow_complete = True
                 self.userauth_complete = True
                 self.userdata = self.user_data
