@@ -17,12 +17,12 @@ class UserFlow:
         if "userflow_initialized" not in st.session_state:
             st.session_state.userflow_initialized = True
             st.session_state.userflow_complete = False
-            st.session_state.userauth_complete = False
+            st.session_state.userflow_authenticated = False
 
     def initialize_userflow_attributes(self):
         self.supabase_client = class_clients.SupabaseClient()
         self.userflow_complete = st.session_state.userflow_complete
-        self.userauth_complete = st.session_state.userauth_complete
+        self.userflow_authenticated = st.session_state.userflow_authenticated
 
     def userflow_render(self):
         if self.userflow_complete:
@@ -69,13 +69,12 @@ class UserFlow:
             
             if self.user_data is not None:
                 st.session_state.userflow_complete = True
-                st.session_state.userauth_complete = True
                 st.session_state.userflow_authenticated = True
                 st.session_state.usertype = self.usertype
                 st.session_state.user  = class_user.User()
                 self.user = st.session_state.user
                 self.userflow_complete = True
-                self.userauth_complete = True
+                self.userflow_authenticated = True
                 self.userdata = self.user_data
                 st.session_state.userdata = self.userdata
                 st.rerun()
