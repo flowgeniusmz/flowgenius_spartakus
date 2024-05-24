@@ -53,7 +53,6 @@ class UserFlow:
         if self.usertype == "new":
             self.firstname = st.text_input(label="First Name", key="firstname")
             self.lastname = st.text_input(label="Last Name", key="lastname")
-            self.fullname = self.firstname + " " + self.lastname
             self.business_name = st.text_input(label="Business Name", key="business_name")
             self.email = st.text_input(label="Email", key="email")
             self.createddate = datetime.now().isoformat()
@@ -61,6 +60,7 @@ class UserFlow:
         self.userflow_submit = st.button(label="Submit", key="userflow_submitted", type="primary")
         if self.userflow_submit:
             if self.usertype == "new":
+                self.fullname = f"{self.firstname} {self.lastname}"
                 self.user_data = self.supabase_client.user_addition(username=self.username, password=self.password, email=self.email, firstname=self.firstname, lastname=self.lastname, fullname=self.fullname, createddate=self.createddate, userrole=self.userrole)
             elif self.usertype == "existing":
                 self.user_data = self.supabase_client.user_authentication(username=self.username, password=self.password)
