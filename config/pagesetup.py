@@ -181,9 +181,9 @@ def get_component_overview(varPageNumber: int):
         st.markdown(f"{description}")
     st.divider()
 
-def display_background_image():
+def display_background_image_full():
     # Set the Streamlit image for branding as the background with transparency
-    background_image = "assets/logo/logo.png"
+    background_image = "http://chat.spartakusai.com/icon.png"
     st.markdown(
         f"""
         <style>
@@ -196,9 +196,60 @@ def display_background_image():
         unsafe_allow_html=True
     )
 
+def display_background_image_stretch2():
+    # Set the Streamlit image for branding as the background with transparency
+    background_image = "http://chat.spartakusai.com/icon.png"
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url({background_image});
+            background-size: contain; /* or '100% 100%' to stretch */
+            background-repeat: no-repeat;
+            background-position: center;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+def display_background_image_stretch2():
+    # Set the Streamlit image for branding as the background with transparency
+    background_image = "http://chat.spartakusai.com/icon.png"
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url({background_image});
+            background-size: contain; /* or '100% 100%' to stretch */
+            background-repeat: no-repeat;
+            background-position: center;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+def display_background_image_stretch():
+     # Set the local path for the background image
+    background_image = "http://chat.spartakusai.com/icon.png"
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url({background_image});
+            background-size: cover; /* Make sure the image covers the entire background */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-attachment: fixed; /* Make sure the image is fixed on the screen */
+            background-position: center; /* Center the image */
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 def display_background_image2():
     # Set the Streamlit image for branding as the background with transparency
-    background_image = "assets/logo/logo.png"
+    background_image = "http://chat.spartakusai.com/icon.png"
     st.markdown(
         f"""
         <style>
@@ -245,7 +296,7 @@ def get_sidebar_pagelinks():
             st.page_link(page=path, label=subtitle)
 
 def get_userflow_setup():
-    display_background_image()
+    display_background_image_stretch()
     get_page_styling()
     set_title_manual(varTitle="SpartakusAI", varSubtitle="User Authentication")
     cc = st.columns([1,3,1])
@@ -279,7 +330,7 @@ def get_pageconfig_title_with_popmenu(varPageNumber: int, varDiv: bool=True):
 
 
 def master_page_display(varPageNumber: int):
-    display_background_image()
+    display_background_image_stretch()
     get_page_styling()
     #create_sidebar_nav(varPageNumber=varPageNumber)
     get_pageconfig_title(varPageNumber=varPageNumber)
@@ -288,7 +339,7 @@ def master_page_display(varPageNumber: int):
         get_component_pagelinksection()
 
 def master_page_display_styled(varPageNumber: int):
-    display_background_image()
+    display_background_image_stretch()
     get_page_styling()
     #create_sidebar_nav(varPageNumber=varPageNumber)
     get_pageconfig_title(varPageNumber=varPageNumber)
@@ -298,7 +349,7 @@ def master_page_display_styled(varPageNumber: int):
         get_component_pagelinksection_styled()
 
 def master_page_display_styled_popmenu(varPageNumber: int):
-    display_background_image()
+    display_background_image_stretch()
     get_page_styling()
     #create_sidebar_nav(varPageNumber=varPageNumber)
     get_pageconfig_title_with_popmenu(varPageNumber=varPageNumber)
@@ -308,7 +359,7 @@ def master_page_display_styled_popmenu(varPageNumber: int):
         get_component_pagelinksection_styled()
 
 def master_page_display_styled_popmenu_pop(varPageNumber: int):
-    display_background_image()
+    display_background_image_stretch()
     #get_page_styling()
     #create_sidebar_nav(varPageNumber=varPageNumber)
     get_pageconfig_title_with_popmenu(varPageNumber=varPageNumber)
@@ -318,7 +369,7 @@ def master_page_display_styled_popmenu_pop(varPageNumber: int):
         get_component_pagelinksection_styled_popover()
 
 def master_userflow_display():
-    display_background_image2()
+    display_background_image_stretch()
     get_page_styling()
     set_title_manual(varTitle="DaddyBets", varSubtitle="Welcome")
     
@@ -374,6 +425,15 @@ def userflow_styled_container():
         with sc_inner:
             userflow_container = st.container(border=False)
     return userflow_container
+
+def userflow_styled_container2(height: int=None, border: bool=False):
+    c1 = userflow_styled_container()
+    with c1:
+        if height is not None:
+            c2 = st.container(height=height, border=border)
+        else:
+            c2 = st.container(border=border)
+    return c2
 
 def container_styled3(varKey):
     styledcontainer = sc(
