@@ -22,5 +22,10 @@ def initialize_session_state():
         st.session_state.authenticated = False
         st.session_state.userflow_complete = False
         st.session_state.userflow_authenticated = False
+        st.session_state.userflow_submitted = False
         
-   
+def sessionstate_controller():
+    if "initialized" not in st.session_state:
+        initialize_session_state()
+    elif not st.session_state.initialized:
+        initialize_session_state()

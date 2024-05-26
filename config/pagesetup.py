@@ -299,10 +299,9 @@ def get_userflow_setup():
     display_background_image_stretch()
     get_page_styling()
     set_title_manual(varTitle="SpartakusAI", varSubtitle="User Authentication")
-    cc = st.columns([1,3,1])
-    with cc[1]:
-        main_container = st.container(border=True, height=600)
-        return main_container
+    maincontainer = userflow_styled_container2()
+    return maincontainer
+    
         
     
 def popover_menu(varPageNumber: int):
