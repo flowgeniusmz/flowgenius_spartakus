@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container as sc
+import base64
 
 def get_page_styling():
     with open("config/style.css" ) as css:
@@ -213,22 +214,33 @@ def display_background_image_stretch2():
         unsafe_allow_html=True
     )
 
-def display_background_image_stretch2():
-    # Set the Streamlit image for branding as the background with transparency
-    background_image = "http://chat.spartakusai.com/icon.png"
+def display_background_image_stretch3():
+    # Set the local path for the background image
+    image_path = "assets/main.png"
+
+    # Read the image file
+    with open(image_path, "rb") as image_file:
+        image_bytes = image_file.read()
+
+    # Encode the image to base64 to embed it directly in the HTML
+    image_base64 = base64.b64encode(image_bytes).decode()
+
+    # Create the CSS with the base64 image
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url({background_image});
-            background-size: contain; /* or '100% 100%' to stretch */
-            background-repeat: no-repeat;
-            background-position: center;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url(data:image/png;base64,{image_base64});
+            background-size: cover; /* Make sure the image covers the entire background */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-attachment: fixed; /* Make sure the image is fixed on the screen */
+            background-position: center; /* Center the image */
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
+
 def display_background_image_stretch():
      # Set the local path for the background image
     background_image = "http://chat.spartakusai.com/icon.png"
@@ -296,7 +308,7 @@ def get_sidebar_pagelinks():
             st.page_link(page=path, label=subtitle)
 
 def get_userflow_setup():
-    display_background_image_stretch()
+    display_background_image_stretch3()
     get_page_styling()
     set_title_manual(varTitle="SpartakusAI", varSubtitle="User Authentication")
     maincontainer = userflow_styled_container2()
