@@ -195,5 +195,5 @@ class Tools:
         yelp_business_records_df = pd.DataFrame(business_records)
         return yelp_business_records_df
 
-    
+                                                                        
 
