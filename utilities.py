@@ -95,3 +95,6 @@ def user_create(username: str, password: str, email: str, businessname: str, fir
         st.session_state.authenticated = False
         return False
 
+def append_chat_message(role: str, content: str):
+    st.session_state.messages.append({"role": role, "content": content})
+

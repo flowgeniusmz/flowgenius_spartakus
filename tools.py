@@ -29,7 +29,7 @@ class Tools:
         Returns:
             dict: The search results including raw content and answers.
         """
-        response = tavClient.search(query=query, search_depth="advanced", include_raw_content=True, include_answer=True, max_results=7)
+        response = TavilyClient(api_key=st.secrets.tavily.api_key).search(query=query, search_depth="advanced", include_raw_content=True, include_answer=True, max_results=7)
         return response
     
     def google_places_search(query: str):
@@ -42,7 +42,7 @@ class Tools:
         Returns:
             dict: The search results with detailed information about the business.
         """
-        response = places.places(client=googleClient, query=query, region="US")
+        response = places.places(client=Client(key=st.secrets.google.maps_api_key), query=query, region="US")
         return response
     
     def google_address_validation(address_lines: list):
@@ -55,7 +55,7 @@ class Tools:
         Returns:
             dict: The validation results including any corrections or standardizations.
         """
-        response = addressvalidation.addressvalidation(client=googleClient, addressLines=address_lines, regionCode="US", enableUspsCass=True)
+        response = addressvalidation.addressvalidation(client=Client(key=st.secrets.google.maps_api_key), addressLines=address_lines, regionCode="US", enableUspsCass=True)
         return response
 
     def google_geocode(address_lines: list):
@@ -68,7 +68,7 @@ class Tools:
         Returns:
             dict: The geocoding results with latitude and longitude coordinates.
         """
-        response = geocoding.geocode(client=googleClient, address=address_lines, region="US")
+        response = geocoding.geocode(client=Client(key=st.secrets.google.maps_api_key), address=address_lines, region="US")
         return response
     
     def yelp_query_search(query: str, zipcode: str):
@@ -82,7 +82,7 @@ class Tools:
         Returns:
             list: A list of businesses with basic information.
         """
-        response = yelpClient.search_query(term=query, location=zipcode)
+        response = YelpAPI(api_key=st.secrets.yelp.api_key).search_query(term=query, location=zipcode)
         businesses = response['businesses']
         return businesses
 
@@ -96,7 +96,7 @@ class Tools:
         Returns:
             dict: The detailed information about the business.
         """
-        response = yelpClient.business_query(id=business_id)
+        response = YelpAPI(api_key=st.secrets.yelp.api_key).business_query(id=business_id)
         return response
 
     def yelp_search(query: str, zipcode: str):
@@ -111,11 +111,11 @@ class Tools:
             pd.DataFrame: A DataFrame containing detailed information about the businesses.
         """
         business_records = []
-        businesses = yelpClient.search_query(term=query, location=zipcode)['businesses']
+        businesses = YelpAPI(api_key=st.secrets.yelp.api_key).search_query(term=query, location=zipcode)['businesses']
         
         for business in businesses:
             business_id = business.get('id')
-            detailed_info = yelpClient.business_query(id=business_id)
+            detailed_info = YelpAPI(api_key=st.secrets.yelp.api_key).business_query(id=business_id)
             business_record = {
                 'id': business.get('id'),
                 'alias': business.get('alias'),

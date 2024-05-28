@@ -24,6 +24,8 @@ def initialize_session_state():
         st.session_state.userflow_authenticated = False
         st.session_state.userflow_submitted = False
         st.session_state.userdata = None
+        st.session_state.messages = [{"role": "assistant", "content": "Welcome to SpartakusAI! I am Sparty - how may I help you today?"}]
+        st.session_state.threadmessages = None
         
 def sessionstate_controller():
     if "initialized" not in st.session_state:
