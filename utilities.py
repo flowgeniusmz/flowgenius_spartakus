@@ -102,7 +102,7 @@ def add_userdata(userdata):
     
 def user_login(username: str, password: str):
     client = create_client(supabase_key=st.secrets.supabase.api_key_admin, supabase_url=st.secrets.supabase.url)
-    response = client.table("users").select("username", "password", "email", "firstname", "lastname", "fullname", "vectorstoreid", "threadid", "createddate", "userrole", "businessname", "businessaddress").eq("username", username).eq("password", password).execute()
+    response = client.table("users").select("username", "password", "email", "firstname", "lastname", "fullname", "vectorstoreid", "threadid", "createddate", "userrole", "businessname", "businessaddress", "form_036", "form_125", "form_126", "form_130", "form_133", "form_137", "form_140").eq("username", username).eq("password", password).execute()
     responsedata = response.data
     if responsedata:
         userdata = responsedata[0]
@@ -117,7 +117,10 @@ def user_create(username: str, password: str, email: str, businessname: str, bus
     client = create_client(supabase_key=st.secrets.supabase.api_key_admin, supabase_url=st.secrets.supabase.url)
     vectorstoreid = create_vectorstore(firstname=firstname, lastname=lastname)
     threadid = create_thread(vector_store_id=vectorstoreid)
-    response = client.table("users").insert({"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "fullname": get_fullname(firstname=firstname, lastname=lastname), "userrole": userrole, "createddate": get_current_datetime(), "threadid": threadid, "vectorstoreid": vectorstoreid, "businessname": businessname, "businessaddress": businessaddress}).execute()
+    if userrole == "Admin":
+        response = client.table("users").insert({"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "fullname": get_fullname(firstname=firstname, lastname=lastname), "userrole": userrole, "createddate": get_current_datetime(), "threadid": threadid, "vectorstoreid": vectorstoreid, "businessname": businessname, "businessaddress": businessaddress, "form_036": True, "form_125": True, "form_126": True, "form_130": True, "form_133": True, "form_137": True, "form_140": True }).execute()
+    elif userrole == "Client" or userrole == "Carrier":
+        response = client.table("users").insert({"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "fullname": get_fullname(firstname=firstname, lastname=lastname), "userrole": userrole, "createddate": get_current_datetime(), "threadid": threadid, "vectorstoreid": vectorstoreid, "businessname": businessname, "businessaddress": businessaddress, "form_036": False, "form_125": True, "form_126": True, "form_130": False, "form_133": False, "form_137": False, "form_140": False }).execute()
     responsedata = response.data
     if responsedata:
         userdata = responsedata[0]
