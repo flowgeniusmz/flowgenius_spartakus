@@ -62,7 +62,7 @@ def create_first_message(thread_id: str, userdata):
     threadmessage1 = client.beta.threads.messages.create(thread_id=thread_id, role="assistant", content=content1)
     toolchoice = [{"type": "function", "function": {"name": "tavily_search"}}, {"type": "function", "function": {"name": "google_places_search"}}]
     st.toast("Please wait while your account is created")
-    run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=st.secrets.openai.assistant_id, additional_instructions="Run tavily_search and google_places_search asynchronously. Respond with 'Welcome to SpartakusAI - how may I help you?' only.")
+    run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=st.secrets.openai.assistant_id, tool_choice={"type": "function", "function": {"name": "business_research"}},additional_instructions="Run business_research asynchronously. Respond with 'Welcome to SpartakusAI - how may I help you?' only.")
     while run.status == "in_progress" or run.status == "queued":
         time.sleep(1)
         run = client.beta.threads.runs.retrieve(run_id=run.id, thread_id=thread_id)

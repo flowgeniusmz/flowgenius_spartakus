@@ -19,6 +19,15 @@ yelpClient = YelpAPI(api_key=st.secrets.yelp.api_key)
 
 
 class Tools:
+    def business_research(query: str):
+        tclient = TavilyClient(api_key=st.secrets.tavily.api_key)
+        gclient = Client(key=st.secrets.google.maps_api_key)
+        tresponse = tclient.search(query=query, search_depth="advanced", include_raw_content=True, include_answer=True, max_results=7)
+        gresponse = places.places(client=gclient, query=query, region="US")
+        response = f"Tavily Search: {tresponse}; Google Places Search: {gresponse}"
+        print(response)
+        return response
+    
     def tavily_search(query: str):
         """
         Performs an advanced search using the Tavily client to gather comprehensive information about a business.

@@ -8,7 +8,7 @@ client = OpenAI(api_key=st.secrets.openai.api_key)
 threadid = "thread_rtUmonQC9BwwkAy4KZth90cl"
 messages = client.beta.threads.messages.list(thread_id=threadid)
 print(messages)
-run = "run_G5KKmpvtdmSd3rtrlO2h1YB4"
+run = "run_gRl7tK7BQO6tSyNsh6gcUyFX"
 
 client.beta.threads.runs.cancel(run_id=run, thread_id=threadid)
 
