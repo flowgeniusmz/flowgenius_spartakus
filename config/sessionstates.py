@@ -13,6 +13,7 @@ def initialize_session_state():
         st.session_state.fullname = None
         st.session_state.businessid = None
         st.session_state.businessname = None
+        st.session_state.businessaddress = None
         st.session_state.vectorstore = None
         st.session_state.thread = None
         st.session_state.threadid = None

@@ -9,6 +9,9 @@ from typing import Literal
 import time
 from datetime import datetime
 from tempfile import NamedTemporaryFile
+import base64
+import json
+from tools import Tools
 
 def get_client(client_type: Literal["openai", "supabase", "salesforce", "googlemaps", "yelp", "tavily"]):
     if client_type == "openai":
@@ -49,6 +52,34 @@ def create_thread(vector_store_id: str=None):
         threadid = OpenAI(api_key=st.secrets.openai.api_key).beta.threads.create().id
     return threadid
 
+def create_first_message(thread_id: str, userdata):
+    client = OpenAI(api_key=st.secrets.openai.api_key)
+    message = st.secrets.messageconfig.message_1
+    content = message.format(user_data=f"{userdata}")
+    threadmessage = client.beta.threads.messages.create(thread_id=thread_id, role="user", content=content)
+    message1 = st.secrets.messageconfig.message_4
+    content1 = message1.format(fullname=st.session_state.fullname, businessname = st.session_state.businessname, businessaddress=st.session_state.businessaddress)
+    threadmessage1 = client.beta.threads.messages.create(thread_id=thread_id, role="assistant", content=content1)
+    toolchoice = [{"type": "function", "function": {"name": "tavily_search"}}, {"type": "function", "function": {"name": "google_places_search"}}]
+    st.toast("Please wait while your account is created")
+    run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=st.secrets.openai.assistant_id, additional_instructions="Run tavily_search and google_places_search asynchronously. Respond with 'Welcome to SpartakusAI - how may I help you?' only.")
+    while run.status == "in_progress" or run.status == "queued":
+        time.sleep(1)
+        run = client.beta.threads.runs.retrieve(run_id=run.id, thread_id=thread_id)
+        if run.status == "requires_action":
+            tool_outputs = []
+            tool_calls = run.required_action.submit_tool_outputs.tool_calls
+            for tool_call in tool_calls:
+                tool_id = tool_call.id
+                tool_name = tool_call.function.name
+                tool_args = json.loads(tool_call.function.arguments)
+                tool_output = getattr(Tools, tool_name)(**tool_args)
+                tool_outputs.append({"tool_call_id": tool_id, "output": f"{tool_output}"})
+            run = client.beta.threads.runs.submit_tool_outputs(run_id=run.id, thread_id=thread_id, tool_outputs=tool_outputs)
+        elif run.status == "completed":
+            st.toast("Account created!")
+            break
+
 def create_tempfile(suffix: Literal[".txt", ".log", ".dat", ".tmp", ".csv", ".json", ".xml", ".html", ".xlsx", ".pdf", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".mp3", ".wav", ".ogg", ".flac", ".mp4", ".avi", ".mov", ".mkv", ".zip", ".tar", ".gz", ".bz2", ".7z", ".rar", ".py", ".java", ".c", ".cpp", ".js", ".html", ".css"]):
     with NamedTemporaryFile(delete=False, suffix=suffix) as temp_file:
         temp_file_path = temp_file.name
@@ -66,10 +97,12 @@ def add_userdata(userdata):
     st.session_state.threadid = userdata["threadid"]
     st.session_state.createddate = userdata["createddate"]
     st.session_state.userrole = userdata["userrole"]
+    st.session_state.businessname = userdata["businessname"]
+    st.session_state.businessaddress = userdata["businessaddress"]
     
 def user_login(username: str, password: str):
     client = create_client(supabase_key=st.secrets.supabase.api_key_admin, supabase_url=st.secrets.supabase.url)
-    response = client.table("users").select("username", "password", "email", "firstname", "lastname", "fullname", "vectorstoreid", "threadid", "createddate", "userrole").eq("username", username).eq("password", password).execute()
+    response = client.table("users").select("username", "password", "email", "firstname", "lastname", "fullname", "vectorstoreid", "threadid", "createddate", "userrole", "businessname", "businessaddress").eq("username", username).eq("password", password).execute()
     responsedata = response.data
     if responsedata:
         userdata = responsedata[0]
@@ -80,15 +113,17 @@ def user_login(username: str, password: str):
         st.session_state.authenticated = False
         return False
 
-def user_create(username: str, password: str, email: str, businessname: str, firstname: str, lastname: str, userrole: Literal["Admin", "Client", "Carrier"]):
+def user_create(username: str, password: str, email: str, businessname: str, businessaddress: str, firstname: str, lastname: str, userrole: Literal["Admin", "Client", "Carrier"]):
     client = create_client(supabase_key=st.secrets.supabase.api_key_admin, supabase_url=st.secrets.supabase.url)
     vectorstoreid = create_vectorstore(firstname=firstname, lastname=lastname)
     threadid = create_thread(vector_store_id=vectorstoreid)
-    response = client.table("users").insert({"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "fullname": get_fullname(firstname=firstname, lastname=lastname), "userrole": userrole, "createddate": get_current_datetime(), "threadid": threadid, "vectorstoreid": vectorstoreid}).execute()
+    response = client.table("users").insert({"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "fullname": get_fullname(firstname=firstname, lastname=lastname), "userrole": userrole, "createddate": get_current_datetime(), "threadid": threadid, "vectorstoreid": vectorstoreid, "businessname": businessname, "businessaddress": businessaddress}).execute()
     responsedata = response.data
     if responsedata:
         userdata = responsedata[0]
         add_userdata(userdata=userdata)
+        create_first_message(thread_id=threadid, userdata=userdata)
+        #create_first_message(thread_id=threadid, userdata=userdata)
         st.session_state.authenticated = True
         return True
     else:
@@ -97,4 +132,19 @@ def user_create(username: str, password: str, email: str, businessname: str, fir
 
 def append_chat_message(role: str, content: str):
     st.session_state.messages.append({"role": role, "content": content})
+
+
+def convert_to_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode()
+        return encoded_string
+    
+def encode_image(image_path: str):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+        return encoded_string
+    
+def get_base64_image_url(b64encoded_image):
+    url = f"data:image/png;base64,{b64encoded_image}"
+    return url
 

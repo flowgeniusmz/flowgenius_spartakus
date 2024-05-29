@@ -64,8 +64,3 @@ if prompt := st.chat_input(placeholder="Enter your question or request here...")
             run = client.beta.threads.runs.submit_tool_outputs(run_id=run.id, thread_id=threadid, tool_outputs=tool_outputs)
 
 
-        
-           
-
-
-    

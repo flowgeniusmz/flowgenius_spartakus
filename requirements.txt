@@ -40,3 +40,6 @@ yelpapi
 googlemaps
 pydantic
 ffmpeg
+clip
+torch
+faiss-cpu

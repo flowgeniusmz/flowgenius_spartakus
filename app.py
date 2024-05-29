@@ -30,11 +30,12 @@ if not st.session_state.userflow_submitted:
             st.session_state.lastname = st.text_input(label="Last Name", key="_lastname")
             st.session_state.email = st.text_input(label="Email Address", key="_email")
             st.session_state.businessname = st.text_input(label="Business Name", key="_businessname")
-        st.session_state.userrole = st.radio(label="User Role", key="_userrole", options=["Admin", "Client", "Carrier"], horizontal=True, index=None)
+            st.session_state.businessaddress = st.text_input(label="Business Address", key="_businessaddress")
+            st.session_state.userrole = st.radio(label="User Role", key="_userrole", options=["Admin", "Client", "Carrier"], horizontal=True, index=None)
         st.session_state.userflow_submitted = st.button(label="Submit", type="primary")
         if st.session_state.userflow_submitted:
             if usertype == "new":
-                auth = u.user_create(username=st.session_state.username, password=st.session_state.password, email=st.session_state.email, businessname=st.session_state.businessname, firstname=st.session_state.firstname, lastname=st.session_state.lastname, userrole=st.session_state.userrole)
+                auth = u.user_create(username=st.session_state.username, password=st.session_state.password, email=st.session_state.email, businessname=st.session_state.businessname, businessaddress=st.session_state.businessaddress, firstname=st.session_state.firstname, lastname=st.session_state.lastname, userrole=st.session_state.userrole)
             elif usertype == "existing":
                 auth = u.user_login(username=st.session_state.username, password=st.session_state.password)
             
