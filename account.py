@@ -85,3 +85,29 @@ class BasicUserInformation:
                 st.text_input(label="Username", disabled=True, value=self.username)
                 st.text_input(label="Business Address", disabled=True, value=self.businessaddress)
 
+
+class FormAccess:
+    def __init__(self):
+        self.initialize_attributes()
+        self.initialize_display()
+
+    def initialize_attributes(self):
+        self.f36 = st.session_state.f36
+        self.f125= st.session_state.f125
+        self.f126 = st.session_state.f126
+        self.f127 = st.session_state.f127
+        self.f130 = st.session_state.f130
+        self.f133 = st.session_state.f133
+        self.f137 = st.session_state.f137
+        self.f140 = st.session_state.f140
+        self.forms = [{"form": "Form 36", "access": self.f36}, {"form": "Form 125", "access": self.f125},{"form": "Form 126", "access": self.f126},{"form": "Form 127", "access": self.f127}, {"form": "Form 130", "access": self.f130},{"form": "Form 133", "access": self.f133},{"form": "Form 137", "access": self.f137},{"form": "Form 140", "access": self.f140}]
+    
+    def initialize_display(self):
+        self.formaccess_container = st.container(border=False)
+        with self.formaccess_container:
+            self.formaccesscols = st.columns([1,20,1])
+            for form in self.forms:
+                form_name = form['form']
+                form_value = form['access']
+                with self.formaccesscols[1]:
+                    st.checkbox(label=form_name, value=form_value, disabled=True)

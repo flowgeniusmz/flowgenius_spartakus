@@ -175,7 +175,7 @@ def get_component_overview(varPageNumber: int):
     header = get_pageconfig_item(varPageNumber=varPageNumber, varPageConfigType="headers")
     subtitle = get_pageconfig_item(varPageNumber=varPageNumber, varPageConfigType="subtitles")
     description = get_pageconfig_item(varPageNumber=varPageNumber, varPageConfigType="descriptions")
-    st.markdown(f"""<span style="font-weight: bold; color:#4A90E2; font-size:1.3em;">{header}</span>""", unsafe_allow_html=True)    
+    st.markdown(f"""<span style="font-weight: bold; color:#285E9F; font-size:1.3em;">{header}</span>""", unsafe_allow_html=True)    
     if varPageNumber == 0:
         st.markdown(body=description)
     else:
@@ -230,7 +230,7 @@ def display_background_image_stretch3():
         f"""
         <style>
         .stApp {{
-            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url(data:image/png;base64,{image_base64});
+            background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url(data:image/png;base64,{image_base64});
             background-size: cover; /* Make sure the image covers the entire background */
             background-repeat: no-repeat; /* Do not repeat the image */
             background-attachment: fixed; /* Make sure the image is fixed on the screen */
@@ -248,7 +248,7 @@ def display_background_image_stretch():
         f"""
         <style>
         .stApp {{
-            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.90)), url({background_image});
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.95)), url({background_image});
             background-size: cover; /* Make sure the image covers the entire background */
             background-repeat: no-repeat; /* Do not repeat the image */
             background-attachment: fixed; /* Make sure the image is fixed on the screen */
@@ -333,7 +333,9 @@ def get_pageconfig_title_with_popmenu(varPageNumber: int, varDiv: bool=True):
         with headercols[0]:
             title = get_pageconfig_item(varPageNumber=varPageNumber, varPageConfigType="titles")
             subtitle = get_pageconfig_item(varPageNumber=varPageNumber, varPageConfigType="subtitles")
-            st.markdown(f"""<span style="font-weight: bold; font-size: 2em; color:#4A90E2;">{title} </span> <span style="font-weight: bold; color:#FFFFFF; font-size:1.3em;">{subtitle}</span>""", unsafe_allow_html=True)
+            ##285E9F
+            ##4a90e2
+            st.markdown(f"""<span style="font-weight: bold; font-size: 2em; color:#285E9F;">{title} </span> <span style="font-weight: bold; color:#4A90E2; font-size:1.3em;">{subtitle}</span>""", unsafe_allow_html=True)
         with headercols[1]:
             menu = popover_menu(varPageNumber=varPageNumber)
         if varDiv:
