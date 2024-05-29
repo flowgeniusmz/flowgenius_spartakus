@@ -1,5 +1,6 @@
 import streamlit as st
 from config import pagesetup as ps
+from chathistory import ChatHistory
 
 page_number = 3
 ps.master_page_display_styled_popmenu_pop(varPageNumber=page_number)
@@ -19,3 +20,5 @@ with maincontainer:
         ps.get_gray_header(varText="User Detailed Information")
         tabnames = ["Chat History", "Forms", "Other"]
         tab1, tab2, tab3 = st.tabs(tabs=tabnames)
+        with tab1:
+            chathist = ChatHistory()
