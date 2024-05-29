@@ -27,6 +27,14 @@ def initialize_session_state():
         st.session_state.userdata = None
         st.session_state.messages = [{"role": "assistant", "content": "Welcome to SpartakusAI! I am Sparty - how may I help you today?"}]
         st.session_state.threadmessages = None
+        st.session_state.f36 = False
+        st.session_state.f125 = False
+        st.session_state.f126 = False
+        st.session_state.f127 = False
+        st.session_state.f130 = False
+        st.session_state.f133 = False
+        st.session_state.f137 = False
+        st.session_state.f140 = False
         
         
 def sessionstate_controller():
