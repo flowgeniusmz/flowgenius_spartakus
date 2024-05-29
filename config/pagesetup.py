@@ -370,8 +370,8 @@ def master_page_display_styled_popmenu(varPageNumber: int):
         get_component_pagelinksection_styled()
 
 def master_page_display_styled_popmenu_pop(varPageNumber: int):
-    display_background_image_stretch()
-    #get_page_styling()
+    display_background_image_stretch3()
+    get_page_styling()
     #create_sidebar_nav(varPageNumber=varPageNumber)
     get_pageconfig_title_with_popmenu(varPageNumber=varPageNumber)
     #get_pageconfig_title_with_home_link(varPageNumber=varPageNumber)
