@@ -34,8 +34,8 @@ class ChatHistory:
             }
             self.df_messages.append(new_row)
         self.df_thread_messages = pd.DataFrame(self.df_messages)
-        self.user_messages = df_messages[df_messages['role'] == 'user']['content'].tolist()
-        self.assistant_messages = df_messages[df_messages['role'] == 'assistant']['content'].tolist()
+        self.user_messages = self.df_thread_messages[self.df_thread_messages['role'] == 'user']['content'].tolist()
+        self.assistant_messages = self.df_thread_messages[self.df_thread_messages['role'] == 'assistant']['content'].tolist()
 
     def initialize_display(self):
         self.history_container = st.container(border=False)
