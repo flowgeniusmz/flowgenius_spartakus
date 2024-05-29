@@ -48,7 +48,7 @@ class ChatHistory:
                         userpop = st.popover(label="User Message", use_container_width=True, disabled=False)
                         with userpop:
                             st.markdown(user_msg)
-                    with runcols[1]:
+                    with runcols[2]:
                         asstpop = st.popover(label="Assistant Message", use_container_width=True, disabled=False)
                         with asstpop:
                             st.markdown(asst_msg)
