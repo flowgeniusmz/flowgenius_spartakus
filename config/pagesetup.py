@@ -259,21 +259,21 @@ def display_background_image_stretch():
         unsafe_allow_html=True
     )
 
-def display_background_image2():
-    # Set the Streamlit image for branding as the background with transparency
-    background_image = "http://chat.spartakusai.com/icon.png"
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('{background_image}');
-            background-size: cover;
-            background-attachment: fixed; /* Ensures the background is fixed during scroll */
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+# def display_background_image2():
+#     # Set the Streamlit image for branding as the background with transparency
+#     background_image = "http://chat.spartakusai.com/icon.png"
+#     st.markdown(
+#         f"""
+#         <style>
+#         .stApp {{
+#             background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('{background_image}');
+#             background-size: cover;
+#             background-attachment: fixed; /* Ensures the background is fixed during scroll */
+#         }}
+#         </style>
+#         """,
+#         unsafe_allow_html=True
+#     )
 
 def create_sidebar_nav(varPageNumber: int):
     st.sidebar.page_link(page=get_pageconfig_item(varPageNumber=0, varPageConfigType="paths"), label=get_pageconfig_item(varPageNumber=0, varPageConfigType="subtitles"), disabled=(varPageNumber == 0))
@@ -308,7 +308,7 @@ def get_sidebar_pagelinks():
             st.page_link(page=path, label=subtitle)
 
 def get_userflow_setup():
-    display_background_image_stretch()
+    display_background_image_stretch3()
     get_page_styling()
     set_title_manual(varTitle="SpartakusAI", varSubtitle="User Authentication")
     maincontainer = userflow_styled_container2()
