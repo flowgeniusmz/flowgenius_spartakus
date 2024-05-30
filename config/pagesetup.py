@@ -243,7 +243,7 @@ def display_background_image_stretch3():
 
 def display_background_image_stretch():
      # Set the local path for the background image
-    background_image = "http://chat.spartakusai.com/main.png"
+    background_image = "assets/main.png"
     st.markdown(
         f"""
         <style>
