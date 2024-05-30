@@ -243,7 +243,7 @@ def display_background_image_stretch3():
 
 def display_background_image_stretch():
      # Set the local path for the background image
-    background_image = "assets/main.png"
+    background_image = "http://chat.spartakusai.com/main.png"
     st.markdown(
         f"""
         <style>
@@ -308,7 +308,7 @@ def get_sidebar_pagelinks():
             st.page_link(page=path, label=subtitle)
 
 def get_userflow_setup():
-    display_background_image_stretch3()
+    display_background_image_stretch()
     get_page_styling()
     set_title_manual(varTitle="SpartakusAI", varSubtitle="User Authentication")
     maincontainer = userflow_styled_container2()
