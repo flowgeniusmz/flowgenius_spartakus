@@ -2,6 +2,8 @@ import streamlit as st
 from config import pagesetup as ps, sessionstates as ss
 from typing import Literal
 import utilities as u
+from elements import HomePage
+from test3 import stripetest, Payment
 
 
 # 1. Set App Config
@@ -20,6 +22,10 @@ if not st.session_state.userflow_submitted:
         with maincols[3]:
             btn_new_user = st.button("New User Registration", type="primary", use_container_width=True)
 
+    
+
+
+    
     # 4. Define Dialog
     @st.experimental_dialog("User Login / Registration", width="large")
     def userflow_dialog(usertype: Literal["new", "existing"]):
@@ -44,10 +50,14 @@ if not st.session_state.userflow_submitted:
             else:
                 st.error("ERROR: Please try again")
 
+   
+
     if btn_exist_user:
         userflow_dialog(usertype="existing")
     elif btn_new_user:
         userflow_dialog(usertype="new")
+
+  
 
 else:
     st.switch_page("pages/1_🏠_Home.py")

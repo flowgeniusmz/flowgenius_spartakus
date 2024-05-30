@@ -243,7 +243,7 @@ def display_background_image_stretch3():
 
 def display_background_image_stretch():
      # Set the local path for the background image
-    background_image = "http://chat.spartakusai.com/icon.png"
+    background_image = "http://chat.spartakusai.com/main.png"
     st.markdown(
         f"""
         <style>
@@ -447,6 +447,20 @@ def userflow_styled_container2(height: int=None, border: bool=False):
         else:
             c2 = st.container(border=border)
     return c2
+
+def userflow_styled_container3(height:int=None, border: bool=False):
+    style1 = "{border: 2px solid rgba(40, 94, 159, 0.75); background-color: rgba(255, 255, 255, 0.75); border-radius: 0.5rem; padding: 1em; overflow: hidden; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); transition: 0.3s; box-sizing: border-box;}"
+    style2 = "{border: 2px solid rgba(0, 0, 0, 0.2); background-color: rgba(40, 94, 159, 0.75); border-radius: 0.5rem; padding: 1em; overflow: hidden; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); transition: 0.3s; box-sizing: border-box;}"
+    sc_outer = sc(key="dafds", css_styles=style2)
+    with sc_outer:
+        sc_inner = sc(key="adfdsfadszfasd", css_styles=style1)
+        with sc_inner:
+            if height is not None:
+                container = st.container(height=height, border=border)
+            else:
+                container = st.container(border=border)
+    return container
+
 
 def container_styled3(varKey):
     styledcontainer = sc(

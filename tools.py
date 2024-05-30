@@ -17,6 +17,42 @@ tavClient = TavilyClient(api_key=st.secrets.tavily.api_key)
 googleClient = Client(key=st.secrets.google.maps_api_key)
 yelpClient = YelpAPI(api_key=st.secrets.yelp.api_key)
 
+class Tools1:
+    def business_research(query: str):
+        tclient = TavilyClient(api_key=st.secrets.tavily.api_key)
+        gclient = Client(key=st.secrets.google.maps_api_key)
+        tresponse = tclient.search(query=query, search_depth="advanced", include_raw_content=True, include_answer=True, max_results=7)
+        gresponse = places.places(client=gclient, query=query, region="US")
+        response = f"Tavily Search: {tresponse}; Google Places Search: {gresponse}"
+        print(response)
+        return response
+
+    def fill_form_125(form_data):
+        supaClient = create_client(supabase_key=st.secrets.supabase.api_key_admin, supabase_url=st.secrets.supabase.url)
+        table = "acord_form_125"
+        response = supaClient.table(table_name=table).insert(json=form_data).execute()
+        if response.data:
+            formdata = response.data[0]
+            return formdata
+        else:
+            print("error")
+
+    def fill_form_125_required(form_data):
+        supaClient = create_client(supabase_key=st.secrets.supabase.api_key_admin, supabase_url=st.secrets.supabase.url)
+        table = "acord_form_125"
+        response = supaClient.table(table_name=table).insert(json=form_data).execute()
+        if response.data:
+            formdata = response.data[0]
+            return formdata
+        else:
+            print("error")
+
+    def internet_search(query: str):
+        client = TavilyClient(api_key=st.secrets.tavily.api_key)
+        response = client.search(query=query, search_depth="advanced", include_answer=True, include_raw_content=True, max_results=7)
+        return response
+        
+
 
 class Tools:
     def business_research(query: str):

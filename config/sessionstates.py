@@ -35,7 +35,19 @@ def initialize_session_state():
         st.session_state.f133 = False
         st.session_state.f137 = False
         st.session_state.f140 = False
-        
+        st.session_state.payinfo = False
+    if "query_params" not in st.session_state:
+        st.session_state.query_params = st.query_params
+        st.session_state.query_params_empty = not bool(st.query_params)
+    if "stripe_session" not in st.session_state:
+        st.session_state.stripe_session = None
+        st.session_state.stripe_session_id = st.query_params.get("session_id", None)
+        st.session_state.stripe_customer_email = None
+        st.session_state.customer_address_state = None
+        st.session_state.customer_address_zip = None
+        st.session_state.stripe_customer_name = None
+        st.session_state.stripe_payment_status = None
+        st.session_state.stripe_payment_intent = None
         
 def sessionstate_controller():
     if "initialized" not in st.session_state:
