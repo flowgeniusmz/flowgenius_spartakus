@@ -3,7 +3,7 @@ from config import pagesetup as ps, sessionstates as ss
 from typing import Literal
 import utilities as u
 from elements import HomePage
-from test3 import stripetest, Payment
+#from test3 import stripetest, Payment
 
 
 # 1. Set App Config
