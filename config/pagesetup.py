@@ -216,7 +216,7 @@ def display_background_image_stretch2():
 
 def display_background_image_stretch3():
     # Set the local path for the background image
-    image_path = "http://chat.spartakusai.com/icon.png"
+    image_path = "assets/main.png"
 
     # Read the image file
     with open(image_path, "rb") as image_file:
