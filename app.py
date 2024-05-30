@@ -2,8 +2,7 @@ import streamlit as st
 from config import pagesetup as ps, sessionstates as ss
 from typing import Literal
 import utilities as u
-from elements import HomePage
-#from test3 import stripetest, Payment
+
 
 
 # 1. Set App Config
@@ -11,6 +10,7 @@ st.set_page_config(page_title=st.secrets.appconfig.app_name, page_icon=st.secret
 
 # 2. Set Session State Config
 ss.sessionstate_controller()
+
 
 if not st.session_state.userflow_submitted:
     # 3. Set Page Config
