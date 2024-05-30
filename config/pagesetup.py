@@ -216,7 +216,7 @@ def display_background_image_stretch2():
 
 def display_background_image_stretch3():
     # Set the local path for the background image
-    image_path = "assets/main.png"
+    image_path = "http://chat.spartakusai.com/icon.png"
 
     # Read the image file
     with open(image_path, "rb") as image_file:
@@ -372,7 +372,7 @@ def master_page_display_styled_popmenu(varPageNumber: int):
         get_component_pagelinksection_styled()
 
 def master_page_display_styled_popmenu_pop(varPageNumber: int):
-    display_background_image_stretch3()
+    display_background_image_stretch()
     get_page_styling()
     #create_sidebar_nav(varPageNumber=varPageNumber)
     get_pageconfig_title_with_popmenu(varPageNumber=varPageNumber)
