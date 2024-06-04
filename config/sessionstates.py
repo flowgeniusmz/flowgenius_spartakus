@@ -36,6 +36,8 @@ def initialize_session_state():
         st.session_state.f137 = False
         st.session_state.f140 = False
         st.session_state.payinfo = False
+        st.session_state.welcomesummary = None
+        st.session_state.checkout_type = None
     if "query_params" not in st.session_state:
         st.session_state.query_params = st.query_params
         st.session_state.query_params_empty = not bool(st.query_params)
@@ -48,6 +50,8 @@ def initialize_session_state():
         st.session_state.stripe_customer_name = None
         st.session_state.stripe_payment_status = None
         st.session_state.stripe_payment_intent = None
+    if "headers" not in st.session_state:
+        st.session_state.headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36','Accept-Language': 'en-US,en;q=0.9','Accept-Encoding': 'identity'}
         
 def sessionstate_controller():
     if "initialized" not in st.session_state:

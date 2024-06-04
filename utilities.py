@@ -12,6 +12,10 @@ from tempfile import NamedTemporaryFile
 import base64
 import json
 from tools import Tools
+import stripe
+from urllib.parse import quote
+import requests
+import json
 
 def get_client(client_type: Literal["openai", "supabase", "salesforce", "googlemaps", "yelp", "tavily"]):
     if client_type == "openai":
@@ -114,6 +118,7 @@ def user_login(username: str, password: str):
     responsedata = response.data
     if responsedata:
         userdata = responsedata[0]
+        print(userdata)
         st.session_state.authenticated = True
         add_userdata(userdata=userdata)
         return True
@@ -159,3 +164,61 @@ def get_base64_image_url(b64encoded_image):
     url = f"data:image/png;base64,{b64encoded_image}"
     return url
 
+def get_summary_message():
+    client = OpenAI(api_key=st.secretse.openai.api_key)
+    threadid = st.session_state.threadid
+    assistantid = st.secrets.openai.assistant_id
+    additional_instructions = "The user has just returned for more assistance. Refresh yourself on the user information. Then review the previous chat messages and provide a concise but comprehensive summary of all previous chats. Return only the summary."
+    messagetext = "Please summarize all previous chats for me and provide a concise yet comprehensive recap to refresh my memory."
+    tmessage = client.beta.threads.messages.create(thread_id=threadid, role="user", content=messagetext)
+    run = client.beta.threads.runs.create(thread_id=threadid, assistant_id=assistantid, additional_instructions=additional_instructions, tool_choice="none")
+    while run.status == "queued" or run.status =="in_progress":
+        time.sleep(1)
+        run = client.beta.threads.runs.retrieve(run_id=run.id, thread_id=threadid)
+        if run.status == "completed":
+            tmessages = client.beta.threads.messages.list(thread_id=threadid)
+            for msg in tmessages:
+                if msg.role == "assistant" and msg.run_id == run.id:
+                    st.session_state.welcomesummary = msg.content[0].text.value
+
+def send_welcome_email(username, password, firstname, lastname, email, businessname, businessaddress, createddate):
+    payload = {
+    "username": username,
+    "password":password,
+    "firstname": firstname,
+    "lastname": lastname,
+    "email": email,
+    "businessname": businessname,
+    "businessaddress": businessaddress,
+    "createddate": createddate
+    }
+    url = st.secrets.requests.welcome_email_url
+    headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36','Accept-Language': 'en-US,en;q=0.9','Accept-Encoding': 'identity'}
+    response = requests.post(url=url, headers=headers, json=payload)
+    response_text = response.text
+    response_json = response.json()
+    return response_json
+
+
+
+# get queues
+
+# be mroe concise
+#prompts
+
+# ai asking it questions, ask it to interview to (1) find out the purpose (i.e. form 125) (2) fulfill that purpose
+# use the form names, not numbers
+# prompt instructions to limit the number of questions and make deductions / research
+# dont ask questions that are knowable or researchable
+# default question by question 1 at a time
+# secratery of state - all the info
+# dunn and bradstreet
+
+## is  this your name, is this locatred here? - get them interested, would you like to save this information, last 4 of phone number is pw, create user interface
+
+## subdirectory on spartakus
+
+# abandoned chat
+
+a = user_login(username="mzozulia@flowgenius.com", password="EverlyQuinn#7665")
+print(a)

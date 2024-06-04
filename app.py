@@ -28,7 +28,6 @@ def userflow_dialog(usertype: Literal["new", "existing"]):
             auth = u.user_create(username=st.session_state.username, password=st.session_state.password, email=st.session_state.email, businessname=st.session_state.businessname, businessaddress=st.session_state.businessaddress, firstname=st.session_state.firstname, lastname=st.session_state.lastname, userrole=st.session_state.userrole)
         elif usertype == "existing":
             auth = u.user_login(username=st.session_state.username, password=st.session_state.password)
-        
         if auth:
             st.rerun()
         else:

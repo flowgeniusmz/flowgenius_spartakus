@@ -5,6 +5,7 @@ from assistant import Assistant, Tools
 import time
 import pandas as pd
 import json
+from simple_salesforce import Salesforce
 
 
 class ChatHistory:
@@ -111,3 +112,10 @@ class FormAccess:
                 form_value = form['access']
                 with self.formaccesscols[1]:
                     st.checkbox(label=form_name, value=form_value, disabled=True)
+
+
+def run_soql_agent_tool(string: str):
+    client = Salesforce(username=st.secrets.salesforce.username, password=st.secrets.salesforce.password, security_token=st.secrets.salesforce.security_token)
+    response = client.query(query=string)
+    return response
+

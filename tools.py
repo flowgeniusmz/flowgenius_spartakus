@@ -204,3 +204,5 @@ class Tools:
 
 
 
+response = TavilyClient(api_key=st.secrets.tavily.api_key).search(query="aesthetic lasers", search_depth="advanced", include_answer=True, include_raw_content=True, max_results=10)
+print(response)
