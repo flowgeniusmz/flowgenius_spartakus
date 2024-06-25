@@ -9,7 +9,8 @@ from typing import Literal
 import time
 from datetime import datetime
 from tempfile import NamedTemporaryFile
-from googlemaps import addressvalidation, places, geocoding, Client
+from googlemaps import  places, geocoding, Client
+
 import pandas as pd
 
 
@@ -90,18 +91,18 @@ class Tools:
         response = places.places(client=Client(key=st.secrets.google.maps_api_key), query=query, region="US")
         return response
     
-    def google_address_validation(address_lines: list):
-        """
-        Validates business addresses using Google Address Validation to ensure accuracy for insurance documentation.
+    # def google_address_validation(address_lines: list):
+    #     """
+    #     Validates business addresses using Google Address Validation to ensure accuracy for insurance documentation.
         
-        Parameters:
-            address_lines (list): The address lines to be validated.
+    #     Parameters:
+    #         address_lines (list): The address lines to be validated.
         
-        Returns:
-            dict: The validation results including any corrections or standardizations.
-        """
-        response = addressvalidation.addressvalidation(client=Client(key=st.secrets.google.maps_api_key), addressLines=address_lines, regionCode="US", enableUspsCass=True)
-        return response
+    #     Returns:
+    #         dict: The validation results including any corrections or standardizations.
+    #     """
+    #     response = addressvalidation.addressvalidation(client=Client(key=st.secrets.google.maps_api_key), addressLines=address_lines, regionCode="US", enableUspsCass=True)
+    #     return response
 
     def google_geocode(address_lines: list):
         """

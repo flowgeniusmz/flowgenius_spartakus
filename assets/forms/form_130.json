@@ -1,0 +1,95 @@
+{
+    "applicant_information": {
+      "name": "",
+      "mailing_address": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "zip_code": ""
+      },
+      "phone": "",
+      "email": "",
+      "website": "",
+      "fein_or_soc_sec": "",
+      "naics": "",
+      "sic": "",
+      "entity_type": {
+        "individual": false,
+        "partnership": false,
+        "corporation": false,
+        "joint_venture": false,
+        "llc": false,
+        "subchapter_s_corporation": false,
+        "not_for_profit_org": false,
+        "trust_and_managers": false
+      },
+      "years_in_business": "",
+      "annual_revenue": "",
+      "number_of_employees": ""
+    },
+    "policy_information": {
+      "proposed_eff_date": "",
+      "proposed_exp_date": "",
+      "billing_plan": "",
+      "payment_plan": "",
+      "audit": "",
+      "policy_number": "",
+      "carrier": {
+        "name": "",
+        "naic_code": ""
+      },
+      "company_policy_or_program_name": "",
+      "program_code": "",
+      "lines_of_business": {
+        "workers_compensation": "",
+        "employers_liability": ""
+      },
+      "premium": {
+        "minimum": "",
+        "deposit": "",
+        "policy_premium": ""
+      }
+    },
+    "premises_information": {
+      "location": {
+        "street": "",
+        "city": "",
+        "state": "",
+        "zip_code": ""
+      },
+      "nature_of_business": "",
+      "description_of_operations": ""
+    },
+    "general_information": {
+      "additional_coverages_options_restrictions_endorsements_and_rating_information": "",
+      "additional_premises_information": "",
+      "additional_interests": "",
+      "remarks": ""
+    },
+    "prior_carrier_information": {
+      "carrier": "",
+      "policy_number": "",
+      "policy_type": "",
+      "retro_date": "",
+      "eff_exp_date": "",
+      "general_aggregate": "",
+      "products_comp_op_aggregate": "",
+      "personal_adv_inj": "",
+      "each_occurrence": "",
+      "fire_damage": "",
+      "medical_expense": "",
+      "occurrences_bodily_injury_aggregate": "",
+      "occurrence_property_damage_aggregate": "",
+      "combined_single_limit": "",
+      "modification_factor": "",
+      "total_premium": ""
+    },
+    "loss_history": {
+      "claim_status": "",
+      "date_of_occurrence": "",
+      "date_of_claim": "",
+      "amount_paid": "",
+      "amount_reserved": "",
+      "line_type_description_of_occurrence_or_claim": ""
+    }
+  }

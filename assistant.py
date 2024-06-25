@@ -1,6 +1,5 @@
 import streamlit as st
 from openai import OpenAI
-import googlemaps.addressvalidation
 import googlemaps.geocoding
 from simple_salesforce import Salesforce
 from tavily import TavilyClient
@@ -8,7 +7,7 @@ import pandas as pd
 import json
 import time
 import requests
-from googlemaps import Client as gClient, addressvalidation, places, geocoding, geolocation
+from googlemaps import Client as gClient, places, geocoding, geolocation
 from classes import class_clients
 from config import pagesetup as ps
 from yelpapi import YelpAPI
@@ -159,18 +158,18 @@ class Tools:
         response = places.places(client=googleClient, query=query, region="US")
         return response
     
-    def google_address_validation(address_lines: list):
-        """
-        Validates business addresses using Google Address Validation to ensure accuracy for insurance documentation.
+    # def google_address_validation(address_lines: list):
+    #     """
+    #     Validates business addresses using Google Address Validation to ensure accuracy for insurance documentation.
         
-        Parameters:
-            address_lines (list): The address lines to be validated.
+    #     Parameters:
+    #         address_lines (list): The address lines to be validated.
         
-        Returns:
-            dict: The validation results including any corrections or standardizations.
-        """
-        response = addressvalidation.addressvalidation(client=googleClient, addressLines=address_lines, regionCode="US", enableUspsCass=True)
-        return response
+    #     Returns:
+    #         dict: The validation results including any corrections or standardizations.
+    #     """
+    #     response = addressvalidation.addressvalidation(client=googleClient, addressLines=address_lines, regionCode="US", enableUspsCass=True)
+    #     return response
 
     def google_geocode(address_lines: list):
         """

@@ -3,7 +3,7 @@ from config import pagesetup as ps
 from chathistory import ChatHistory
 from account import BasicUserInformation, ChatHistory, FormAccess
 
-page_number = 3
+page_number = 2
 ps.master_page_display_styled_popmenu_pop(varPageNumber=page_number)
 
 maincontainer = ps.userflow_styled_container2()

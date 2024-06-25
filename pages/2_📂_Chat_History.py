@@ -6,7 +6,7 @@ from chathistory import ChatHistory
 
 
 
-page_number = 2
+page_number = 1
 ps.master_page_display_styled_popmenu_pop(varPageNumber=page_number)
 ChatHistory()
 
