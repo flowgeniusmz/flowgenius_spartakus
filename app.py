@@ -1,9 +1,5 @@
 import streamlit as st
-from config import pagesetup as ps, sessionstates as ss
-from typing import Literal
-import utilities as u
-from classes import clsSessionState as ss, clsPageSetup as ps, clsUserState as us
-
+from classes import clsUserState as us, clsPageSetup as ps, clsSessionState as ss
 
 # 1. Set App Configuration (NOTE: Must be the first 'streamlit' or 'st' command in app)
 st.set_page_config(page_icon=st.secrets.app.icon, page_title=st.secrets.app.title, layout=st.secrets.app.layout, initial_sidebar_state=st.secrets.app.sidebar)

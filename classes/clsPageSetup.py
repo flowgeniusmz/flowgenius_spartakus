@@ -46,7 +46,7 @@ class PageSetup:
 
 class PageUtilities:
     @staticmethod
-    def display_background_page(type: Literal["logo", "logo1", "coach", "wrestler"], style: Literal["background_page", "background_dialog", "styling_page"]="background_page"):
+    def display_background_page(type: Literal["logo", "logo1", "coach", "wrestler", "main"], style: Literal["background_page", "background_dialog", "styling_page"]="background_page"):
         style_template = PageUtilities.get_style_template(style_type=style)
         paths = dict(st.secrets.paths)
         default = st.secrets.paths.logo

@@ -1,66 +1,83 @@
-ACORD Forms
-ACORD forms are standardized forms used in the insurance industry to facilitate efficient and accurate data exchange between different parties, such as insurance carriers, agents, and brokers. Developed by the Association for Cooperative Operations Research and Development (ACORD), these forms cover a wide range of insurance needs, including policy applications, claims submissions, and certificates of insurance.
+# Terms and Conditions
 
-ACORD forms help ensure that key information is consistently captured and communicated, reducing errors and increasing efficiency in processing insurance transactions. For example, the ACORD 25 form is commonly used as a certificate of insurance, summarizing essential policy details like coverage types, limits, and effective dates​ (ACORD)​​ (The Hartford)​​ (AgencyManSys by NASA)​.
+## 1. Introduction
+Welcome to SpartakusAI. These Terms and Conditions ("Terms") govern your access to and use of our services, including our website, application, and any other services we provide (collectively, the "Services"). By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our Services.
 
-SIC Codes
-Standard Industrial Classification (SIC) codes are four-digit numerical codes assigned by the U.S. government to classify businesses by their primary economic activity. These codes are used by government agencies, financial institutions, and insurance companies to analyze and compare businesses' statistical data. In insurance, SIC codes help underwriters assess risk by identifying the nature of the business and its associated hazards. They are crucial for determining appropriate insurance coverage and premiums​ (ACORD)​.
+## 2. Definitions
+- **"We," "us," "our"** refers to SpartakusAI.
+- **"You," "your"** refers to the user of our Services.
+- **"Services"** refers to all products and services provided by SpartakusAI.
+- **"Content"** refers to any text, images, video, audio, or other multimedia content, software, or other information or material submitted to, or on, the Services.
 
-Data Gathering and Interactive Interfaces
-Data gathering in the context of insurance involves collecting necessary information from clients to complete applications, assess risks, and process claims. Interactive interfaces, such as online questionnaires and interview formats with click, dial, or scroll options, facilitate this process by making it more user-friendly and efficient. These interfaces help ensure that clients provide accurate and complete information, reducing the likelihood of errors and omissions in insurance applications​ (AgencyManSys by NASA)​.
+## 3. Use of Services
+### 3.1 Eligibility
+You must be at least 18 years old to use our Services. By using our Services, you represent and warrant that you meet this age requirement and have the legal capacity to enter into these Terms.
 
-Direct Transmission and Data Transfer
-Direct transmission refers to the electronic transfer of data from one system to another without manual intervention. In insurance, this can involve sending completed forms and client information directly to an insurer's underwriting system. This method reduces data entry time, minimizes errors, and speeds up the processing of applications and claims​ (AgencyManSys by NASA)​​ (Wikipedia)​.
+### 3.2 Account Registration
+To access certain features of our Services, you may be required to register for an account. You agree to:
+- Provide accurate, current, and complete information during the registration process.
+- Update such information to keep it accurate, current, and complete.
+- Maintain the security of your password and accept all risks of unauthorized access to your account.
+- Notify us immediately if you discover or suspect any security breaches related to the Services or your account.
 
-Regulatory Compliance and ACORD Forms
-ACORD forms play a vital role in ensuring regulatory compliance in the insurance industry. By standardizing the information exchanged between different entities, these forms help meet legal and regulatory requirements across various jurisdictions. This standardization promotes transparency, accuracy, and consistency in insurance transactions, making it easier for companies to comply with regulations and undergo audits​ (Wikipedia)​.
+### 3.3 User Responsibilities
+You are responsible for all activities that occur under your account. You agree not to:
+- Use the Services for any illegal purpose or in violation of any local, state, national, or international law.
+- Engage in any activity that interferes with or disrupts the Services.
+- Attempt to gain unauthorized access to any portion of the Services or any other systems or networks connected to the Services.
+- Use the Services to transmit any content that is unlawful, defamatory, obscene, or otherwise objectionable.
 
-Efficiency and Accuracy in Insurance Processes
-The use of ACORD forms and standardized data exchange methods significantly improves the efficiency and accuracy of insurance processes. These forms reduce the time and effort required for manual processing, minimize the risk of errors, and enhance the overall quality of data. This leads to faster policy issuance, better risk assessment, and more reliable claims handling, ultimately benefiting both insurers and policyholders​ (AgencyManSys by NASA)​​ (Wikipedia)​.
+## 4. Privacy Policy
+Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information. By using our Services, you agree to the collection and use of information in accordance with our Privacy Policy.
 
-These resources and concepts are essential for training an AI assistant to assist with insurance submissions effectively. Understanding the role and function of ACORD forms, SIC codes, data gathering techniques, direct transmission, and regulatory compliance will enable the AI to streamline and enhance the submission process for commercial insurance agents.
+## 5. Intellectual Property
+### 5.1 Ownership
+All content, features, and functionality of the Services, including but not limited to text, graphics, logos, and software, are the exclusive property of SpartakusAI and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
 
-Life Expectancy
-Life expectancy is a crucial measure used in both insurance and actuarial science. It represents the average number of years an individual is expected to live based on current age and demographic factors. This metric is essential for calculating premiums and determining reserves in life insurance and annuities. Insurers use life expectancy to estimate the risk and expected duration of policies, ensuring they set aside sufficient funds to cover future claims​ (Social Security)​​ (Finance Strategists)​.
+### 5.2 License
+We grant you a limited, non-exclusive, non-transferable, and revocable license to access and use the Services for your personal, non-commercial use. This license is subject to these Terms and does not include any right to:
+- Sell, resell, or commercially use the Services or Content.
+- Copy, reproduce, distribute, publicly perform, or publicly display any Content.
+- Modify or otherwise make any derivative uses of the Services or Content.
+- Use any data mining, robots, or similar data gathering or extraction methods.
+- Download (other than page caching) any portion of the Services or Content, except as expressly permitted by us.
 
-Mortality Tables
-Mortality tables, also known as life tables or actuarial tables, display the probability of death for individuals at various ages. These tables are foundational for the insurance industry as they help in estimating life expectancy and setting appropriate premiums. Mortality tables can be constructed based on historical data and can vary by cohort (birth year) or period (specific time)​ (NerdWallet: Finance smarter)​​ (Finance Strategists)​.
+## 6. Prohibited Activities
+You agree not to:
+- Use the Services for any illegal purpose or in violation of any local, state, national, or international law.
+- Engage in any activity that interferes with or disrupts the Services.
+- Attempt to gain unauthorized access to any portion of the Services or any other systems or networks connected to the Services.
+- Use the Services to transmit any content that is unlawful, defamatory, obscene, or otherwise objectionable.
+- Use the Services to transmit any unsolicited or unauthorized advertising, promotional materials, spam, junk mail, chain letters, or any other form of solicitation.
+- Use the Services to transmit any viruses, malware, or other harmful code.
 
-Premium Calculation
-Premium calculation involves determining the cost of insurance coverage by assessing various risk factors, such as age, health, and lifestyle. Actuaries use mathematical models to estimate the likelihood of insured events occurring, which helps in setting premiums that are adequate to cover expected claims and administrative costs while ensuring profitability​ (Wikipedia)​.
+## 7. Termination
+We reserve the right to terminate or suspend your account and access to the Services at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users of the Services, us, or third parties, or for any other reason.
 
-Underwriting
-Underwriting is the process of evaluating the risk of insuring an individual or entity. This process involves assessing the applicant's health, lifestyle, occupation, and other factors to determine whether to provide coverage and at what cost. Underwriters aim to minimize the risk to the insurer while offering fair and competitive premiums​ (Wikipedia)​.
+## 8. Disclaimers
+### 8.1 No Warranty
+The Services are provided on an "as is" and "as available" basis. We disclaim all warranties of any kind, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that:
+- The Services will meet your specific requirements.
+- The Services will be uninterrupted, timely, secure, or error-free.
+- The results obtained from the use of the Services will be accurate or reliable.
+- Any errors in the Services will be corrected.
 
-Actuarial Reserving
-Actuarial reserving is the practice of setting aside funds to pay future claims. This process ensures that an insurance company remains financially stable and can meet its obligations to policyholders. Actuaries calculate reserves based on estimated future liabilities, considering factors like mortality rates, policyholder behavior, and economic conditions​ (Finance Strategists)​.
+### 8.2 Limitation of Liability
+To the fullest extent permitted by applicable law, in no event shall SpartakusAI, its affiliates, directors, employees, or agents be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+- Your access to or use of or inability to access or use the Services.
+- Any conduct or content of any third party on the Services.
+- Any content obtained from the Services.
+- Unauthorized access, use, or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence), or any other legal theory, whether or not we have been informed of the possibility of such damage.
 
-Risk Management
-Risk management in insurance involves identifying, assessing, and prioritizing potential risks, followed by coordinated efforts to minimize, monitor, and control the impact of unfortunate events. Actuaries play a crucial role in this process by analyzing data to predict and mitigate risks​ (Wikipedia)​.
+## 9. Indemnification
+You agree to defend, indemnify, and hold harmless SpartakusAI and its affiliates, licensors, and service providers, from any claims arising out of your use of the App.
 
-Reinsurance
-Reinsurance is the practice of insurers transferring portions of their risk portfolios to other parties to reduce the likelihood of paying large claims. This process helps insurance companies manage their risk exposure and maintain financial stability. Reinsurance can be proportional (sharing risks and premiums) or non-proportional (covering losses above a certain threshold)​ (Wikipedia)​.
 
-Annuities
-Annuities are financial products that provide a series of payments at regular intervals, typically used as retirement income. Actuaries calculate the premiums and payouts of annuities by considering factors such as life expectancy, interest rates, and mortality rates. Annuities can be structured in various ways, including fixed, variable, and indexed​ (Wikipedia)​.
+## 10. Termination
+We may terminate or suspend your access to the App at any time, without notice, for conduct that we believe violates these Terms.
 
-Actuarial Valuation
-Actuarial valuation is the process of assessing the value of assets and liabilities, particularly in the context of pension plans and insurance policies. This involves using actuarial methods and assumptions to estimate future cash flows and determine present values. Actuarial valuations are critical for financial reporting and regulatory compliance​ (Finance Strategists)​​ (Actuartech)​.
+## 11. Governing Law
+These Terms are governed by the laws of the jurisdiction in which SpartakusAI operates.
 
-Claim Adjustment
-Claim adjustment involves the investigation and evaluation of insurance claims to determine the insurer's liability. This process includes verifying the details of the claim, assessing the extent of the damage or loss, and authorizing payment. The goal is to ensure that claims are settled fairly and efficiently​ (Wikipedia)​.
-
-Solvency Assessment
-Solvency assessment evaluates the financial stability of an insurance company, ensuring it can meet its long-term obligations. This process involves analyzing the company's assets, liabilities, and capital adequacy. Regulatory frameworks like Solvency II in Europe require insurers to maintain sufficient capital to cover their risks​ (Finance Strategists)​​ (Wikipedia)​.
-
-Pension Funding
-Pension funding involves calculating and setting aside the necessary funds to provide promised retirement benefits. Actuaries analyze factors such as employee demographics, life expectancy, and investment returns to ensure that pension plans are adequately funded and sustainable over the long term​ (Finance Strategists)​​ (Actuartech)​.
-
-Actuarial Models
-Actuarial models are mathematical frameworks used to assess and manage financial risks. These models help actuaries predict future liabilities, estimate life expectancies, and determine appropriate premiums. Modern actuarial models incorporate advanced statistical techniques and computational tools to enhance accuracy and efficiency​ (Actuartech)​.
-
-Insurance Regulations
-Insurance regulations govern the operations of insurance companies, including requirements for policy provisions, capital adequacy, consumer protection, and market conduct. These regulations ensure the stability of the insurance market and protect policyholders' interests​ (Wikipedia)​.
-
-Experience Rating
-Experience rating adjusts insurance premiums based on the insured's claim history. This method uses past loss data to predict future risks, ensuring that premiums reflect the level of risk more accurately. Experience rating is commonly used in health and workers' compensation insurance​ (Wikipedia)​.
+## 12. Contact Information
+For any questions about these Terms, please contact us at support@spartakusai.com.

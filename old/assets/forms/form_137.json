@@ -1,0 +1,86 @@
+{
+    "policy_information": {
+      "effective_date": "",
+      "expiration_date": "",
+      "company_name": "",
+      "naic_code": "",
+      "policy_number": "",
+      "producer": {
+        "name": "",
+        "code": "",
+        "sub_code": "",
+        "agency_customer_id": ""
+      }
+    },
+    "coverages_limits": {
+      "liability": {
+        "combined_single_limit": "",
+        "bodily_injury_each_person": "",
+        "bodily_injury_each_accident": "",
+        "property_damage_each_accident": ""
+      },
+      "medical_payments": {
+        "each_person": ""
+      },
+      "uninsured_motorist": {
+        "bodily_injury_each_person": "",
+        "bodily_injury_each_accident": "",
+        "property_damage_each_accident": ""
+      },
+      "underinsured_motorist": {
+        "bodily_injury_each_person": "",
+        "bodily_injury_each_accident": ""
+      },
+      "physical_damage": {
+        "comprehensive": {
+          "deductible": "",
+          "limit": ""
+        },
+        "collision": {
+          "deductible": "",
+          "limit": ""
+        },
+        "specified_causes_of_loss": {
+          "deductible": "",
+          "limit": ""
+        },
+        "towing_and_labor": {
+          "limit": ""
+        }
+      },
+      "hired_auto": {
+        "liability": {
+          "cost_of_hire": "",
+          "limit": ""
+        },
+        "physical_damage": {
+          "cost_of_hire": "",
+          "limit": ""
+        }
+      },
+      "non_owned_auto": {
+        "liability": {
+          "number_of_employees": "",
+          "limit": ""
+        },
+        "physical_damage": {
+          "number_of_employees": "",
+          "limit": ""
+        }
+      },
+      "trailer_interchange": {
+        "limit": "",
+        "deductible": ""
+      }
+    },
+    "endorsements_remarks": "",
+    "applicant_signature": {
+      "name": "",
+      "date": ""
+    },
+    "producer_signature": {
+      "name": "",
+      "date": "",
+      "national_producer_number": ""
+    }
+  }
