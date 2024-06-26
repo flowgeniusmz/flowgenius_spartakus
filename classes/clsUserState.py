@@ -51,19 +51,22 @@ class UserState:
         with main_container:
             buttoncontainer = ps.PageUtilities.get_styled_container1()
             with buttoncontainer:
-                newbtn = st.button("new", use_container_width=True)
-                existbtn = st.button("exist", use_container_width=True)
-            st.divider()
-            chatcontainer = ps.PageUtilities.get_styled_container1()
-            with chatcontainer:
-                dispcont = st.container(border=False, height=300)
-                with dispcont:
-                    with st.chat_message("assistant"):
-                        st.markdown("Welcome to WrestleAI. Type below to try it out!")
-            pcont = st.container(border=False, height=100)
-            with pcont:
-                guestprompt = st.chat_input(placeholder="Type here to try the assistant!")
-            st.divider()
+                cols = st.columns(2)
+                with cols[0]:
+                    newbtn = st.button("new", use_container_width=True)
+                with cols[1]:
+                    existbtn = st.button("exist", use_container_width=True)
+            # st.divider()
+            # chatcontainer = ps.PageUtilities.get_styled_container1()
+            # with chatcontainer:
+            #     dispcont = st.container(border=False, height=300)
+            #     with dispcont:
+            #         with st.chat_message("assistant"):
+            #             st.markdown("Welcome to WrestleAI. Type below to try it out!")
+            # pcont = st.container(border=False, height=100)
+            # with pcont:
+            #     guestprompt = st.chat_input(placeholder="Type here to try the assistant!")
+            # st.divider()
                 
         if newbtn:
             st.session_state.usertype = "new"
