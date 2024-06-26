@@ -53,9 +53,9 @@ class UserState:
             with buttoncontainer:
                 cols = st.columns(2)
                 with cols[0]:
-                    newbtn = st.button("new", use_container_width=True)
+                    newbtn = st.button("Create New Account", use_container_width=True, type="primary")
                 with cols[1]:
-                    existbtn = st.button("exist", use_container_width=True)
+                    existbtn = st.button("Sign In to Existing Account", use_container_width=True,  type="primary")
             # st.divider()
             # chatcontainer = ps.PageUtilities.get_styled_container1()
             # with chatcontainer:
