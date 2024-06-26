@@ -97,7 +97,7 @@ class UserState:
                     st.session_state.termstype = "acknowledged"
                     with payment_placeholder.container(border=False):
                         payheader = ps.PageUtilities.get_header(type="blue", text="Proceed to Payment")
-                        payproceed = html(st.secrets.stripejs.format(st.secrets.stripe.stripejs.format(buy_button_id=st.secrets.stripe.buy_btn_dev, publisher_key=st.secrets.stripe.pub_key_dev, client_reference_id=st.session_state.fullname, customer_email=st.session_state.email)))
+                        payproceed = html(st.secrets.stripe.stripejs.format(st.secrets.stripe.stripejs.format(buy_button_id=st.secrets.stripe.buy_btn_dev, publisher_key=st.secrets.stripe.pub_key_dev, client_reference_id=st.session_state.fullname, customer_email=st.session_state.email)))
     
     def userstate4(self):
         with self.content_placeholder.container(border=False):
