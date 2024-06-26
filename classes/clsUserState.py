@@ -52,13 +52,13 @@ class UserState:
         with self.content_placeholder.container(border=False):
             cols = st.columns([1,20,1,20,1])
             with cols[1]:
-                newuserbutton = st.button(label="Create New Account", use_container_width=True, type="secondary")
+                newuserbutton = st.button(label="Create New Account", use_container_width=True, type="primary")
                 if newuserbutton:
                     st.session_state.usertype = "new"
                     self.callback(next_userstate=2)
 
-            with cols[2]:
-                existuserbutton = st.button(label="Sign In", type="secondary", use_container_width=True)
+            with cols[3]:
+                existuserbutton = st.button(label="Sign In", type="primary", use_container_width=True)
                 if existuserbutton:
                     st.session_state.usertype = "existing"
                     self.callback(next_userstate=4)
