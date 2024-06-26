@@ -79,15 +79,21 @@ class UserState:
     def _userstate2(self):
         ps.PageUtilities.display_background_dialog(type="dialog1", style="background_dialog")
         infoheader = ps.PageUtilities.get_header(type="blue", text="Please Complete Account Information Below")
+        st.session_state.username = st.text_input(label="Username")
+        st.session_state.password = st.text_input(label="Password")
         st.session_state.firstname = st.text_input(label="First Name", key="_firstname", type="default")
         st.session_state.lastname = st.text_input(label="Last Name", key="_lastname", type="default")
         st.session_state.email = st.text_input(label="Email Address", key="_email", type="default")
+        st.session_state.businessname = st.text_input(label="Business Name")
+        st.session_state.businessaddress = st.text_input(label="Business Address")
         st.session_state.userrole = st.radio(label="User Role", key="_userrole", options=st.secrets.lists.userroles, index=None, horizontal=True)
         create_button = st.button(label="Create Account", key="createbutton", type="primary")
         if create_button:
             st.session_state.fullname = f"{st.session_state.firstname} {st.session_state.lastname}"
             st.session_state.createddate = ut.Utilities.get_datetime()
-            self._userstate_callback(next_userstate=3)
+            created = UserStateUtilities.create_user()
+            if created:
+                self._userstate_callback(next_userstate=3)
     
     @st.experimental_dialog(title="Terms, Conditions, and Payment", width="large")
     def _userstate3(self):
@@ -104,7 +110,7 @@ class UserState:
                 st.session_state.termstype = "acknowledged"
                 with payment_placeholder.container(border=False):
                     payheader = ps.PageUtilities.get_header(type="blue", text="Proceed to Payment")
-                    payproceed = html(st.secrets.stripe.stripejs.format(buy_button_id=st.secrets.stripe.buy_btn_dev, publisher_key=st.secrets.stripe.pub_key_dev, client_reference_id="testtest", customer_email="test@test.com"))
+                    payproceed = html(st.secrets.stripe.stripejs.format(buy_button_id=st.secrets.stripe.buy_btn_dev, publisher_key=st.secrets.stripe.pub_key_dev, client_reference_id=f"{st.session_state.username}{st.session_state.threadid}", customer_email=st.session_state.email, username=st.session_state.username, password=st.session_state.password, threadid = st.session_state.threadid))
 
     @st.experimental_dialog(title="User Login", width="large")
     def _userstate4(self):
@@ -114,8 +120,12 @@ class UserState:
         st.session_state.password = st.text_input(label="Password", key="_password", type="password" )
         loginbutton = st.button(label="Login", key="loginbutton", type="primary")
         if loginbutton:
-            st.session_state.logintype = "authenticated"
-            self._userstate_callback(next_userstate=5)
+            auth = UserStateUtilities.authenticate_user()
+            if auth:
+                st.session_state.logintype = "authenticated"
+                self._userstate_callback(next_userstate=5)
+            else:
+                st.error("Please try again")
 
     def _userstate5(self):
         st.session_state.userstatecomplete = True
@@ -131,7 +141,7 @@ class UserStateUtilities:
     @staticmethod
     def create_user():
         UserStateUtilities.user_thread_vector_ids()
-        payload = {"username": st.session_state.username, "password": st.session_state.password, "email": st.session_state.email, "businessname": st.session_state.businessname, "businessaddress": st.session_state.businessaddress, "createddate": st.session_state.createddate, "userrole": st.session_state.userrole, "firstname": st.session_state.firstname, "lastname": st.session_state.lastname, "fullname": st.session_state.fullname, "threadid": st.session_state.threadid, "vectorid": st.session_state.vectorid}
+        payload = {"username": st.session_state.username, "password": st.session_state.password, "email": st.session_state.email, "businessname": st.session_state.businessname, "businessaddress": st.session_state.businessaddress, "createddate": st.session_state.createddate, "userrole": st.session_state.userrole, "firstname": st.session_state.firstname, "lastname": st.session_state.lastname, "fullname": st.session_state.fullname, "threadid": st.session_state.threadid, "vectorstoreid": st.session_state.vectorid}
         response = supa.table("users").insert(payload).execute()
         responsedata = response.data
         if responsedata:
@@ -144,7 +154,7 @@ class UserStateUtilities:
             st.session_state.lastname = userdata.get("lastname")
             st.session_state.fullname = userdata.get("fullname")
             st.session_state.threadid = userdata.get("threadid")
-            st.session_state.vectorid = userdata.get("vectorid")
+            st.session_state.vectorid = userdata.get("vectorstoreid")
             st.session_state.userrole = userdata.get("userrole")
             st.session_state.createddate = userdata.get("createddate")
             return True
