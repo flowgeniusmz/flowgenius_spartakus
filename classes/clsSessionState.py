@@ -60,8 +60,12 @@ class SessionState:
             self.initial_state['userstate'] = 0
             self.initial_state['usertype'] = 'guest'
         else:
-            self.initial_state['userstate'] = 4
-            self.initial_state['usertype'] = "existing"
+            if st.query_params.usertype == "new":
+                self.initial_state['userstate'] = 2
+                self.initial_state['usertype'] = "new"
+            else:
+                self.initial_state['userstate'] = 4
+                self.initial_state['usertype'] = "existing"
         self.initial_state['userstatecomplete'] = False
     
     def _set_termscontent(self):
